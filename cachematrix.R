@@ -28,15 +28,31 @@ cacheSolve <- function(x, ...) {
                     message("getting cached data");
                     return(m)
             }
-            if(is.na(m)) message ("Cannot inverse matrix")
-            else{
+            
             message ("Caching Data");
             data <- x$get()
             m <- solve(data, ...)
             x$setinverse(m)
             m
-    }
-
-
-
+ 
 }
+
+
+## Example ##################
+##  g<-matrix(c(4,3,3,2),2)
+## g
+##      [,1] [,2]
+## [1,]    4    3
+## [2,]    3    2
+## a<-makeCacheMatrix(g)
+## cacheSolve(a)
+##Caching Data
+##     [,1] [,2]
+##[1,]   -2    3
+##[2,]    3   -4
+## cacheSolve(a)
+##getting cached data
+##     [,1] [,2]
+##[1,]   -2    3
+##[2,]    3   -4
+ 
